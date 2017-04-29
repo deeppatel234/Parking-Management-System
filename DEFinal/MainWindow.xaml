@@ -1,0 +1,545 @@
+﻿<Window x:Class="DEFinal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:DEFinal"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        Title="MainWindow" Height="700" Width="1500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#FFA43704">
+            <TextBlock Text="Parking Management System" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontFamily="OCR A Extended"/>
+            <TextBlock Text="Developed And Design by Deep Patel"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White" FontFamily="Segoe UI Light" />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Live Dashboard" FontSize="35" Grid.Row="0" Margin="20,0,0,0" FontFamily="Microsoft JhengHei UI Light" />
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Name="uGrid" Width="320"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Name="DashbordGrid" Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="220"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" Margin="20,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Usage" Grid.Row="0" FontSize="25" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="Bold"  />
+
+                    <Button x:Name="UsageDetailBtn" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="40" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="UsageDetailBtn_Click">
+                         <Image Name="UsageDetailsArrowimg" Source="Images/rightarrow.png"  />
+                     </Button>
+
+                    <TextBlock Name="TotalUsageText" Text="Total Usage of Parking Slots : 0" Grid.Row="1" HorizontalAlignment="Center" FontSize="15" VerticalAlignment="Bottom" />
+
+
+                    <Grid Grid.Row="3">
+                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="170"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                    <RowDefinition Height="35"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="35"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="Ground Floor" Grid.Row="0" FontSize="15" VerticalAlignment="Bottom" FontWeight="Bold" />
+                            <TextBlock Name="Sensor1Text" Text="Slot 1 Usage : 0" Grid.Row="1" FontSize="15" VerticalAlignment="Center" />
+                            <TextBlock Name="Sensor2Text" Text="Slot 2 Usage : 0" Grid.Row="2" FontSize="15" VerticalAlignment="Center" />
+                            <TextBlock Name="Sensor3Text" Text="Slot 3 Usage : 0" Grid.Row="3" FontSize="15" VerticalAlignment="Center" />
+                            <TextBlock Name="Sensor4Text" Text="Slot 4 Usage : 0" Grid.Row="4" FontSize="15" VerticalAlignment="Center" />
+                            <!--<TextBlock Text="First Floor" Grid.Row="5" FontSize="15" VerticalAlignment="Bottom" FontWeight="Bold" />
+                            <TextBlock Text="Slot 5 Usage : 0" Grid.Row="6" FontSize="15" VerticalAlignment="Center" />
+                            <TextBlock Text="Slot 6 Usage : 0" Grid.Row="7" FontSize="15" VerticalAlignment="Center" />
+                            <TextBlock Text="Slot 7 Usage : 0" Grid.Row="8" FontSize="15" VerticalAlignment="Center" />
+                            <TextBlock Text="Slot 8 Usage : 0" Grid.Row="9" FontSize="15" VerticalAlignment="Center" />-->
+
+                        </Grid>
+
+                        <Line Grid.Column="1" X1="0" X2="0" Y1="20" Y2="280" Stroke="Black" StrokeThickness="0.5" HorizontalAlignment="Center" />
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="Top 3 Usage" Grid.Row="0" FontSize="15" VerticalAlignment="Bottom" FontWeight="Bold" />
+                            <TextBlock Name="Top1UsageTxt" Text="Top Slot X1 Usage : 0" Grid.Row="1" FontSize="15" VerticalAlignment="Center" />
+                            <TextBlock Name="Top2UsageTxt" Text="Top Slot X2 Usage : 0" Grid.Row="2" FontSize="15" VerticalAlignment="Center" />
+                            <TextBlock Name="Top3UsageTxt" Text="Top Slot X3 Usage : 0" Grid.Row="3" FontSize="15" VerticalAlignment="Center" />
+                    
+                            <TextBlock Text="Bottom 3 Usage" Grid.Row="5" FontSize="15" VerticalAlignment="Bottom" FontWeight="Bold" />
+                            <TextBlock Name="Bottom1UsageTxt" Text="Bottom Slot X1 Usage : 0" Grid.Row="6" FontSize="15" VerticalAlignment="Center" />
+                            <TextBlock Name="Bottom2UsageTxt" Text="Bottom Slot X2 Usage : 0" Grid.Row="7" FontSize="15" VerticalAlignment="Center" />
+                            <TextBlock Name="Bottom3UsageTxt" Text="Bottom Slot X3 Usage : 0" Grid.Row="8" FontSize="15" VerticalAlignment="Center" />
+                            
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="2" Name="UsageReportGrid" Width="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Usage Details and Reports" Margin="25,0,0,0" Grid.Row="0" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"  />
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+
+                            <Button Name="CarUsageDetailsBtn" Background="{x:Null}" Margin="0,40,0,0" BorderBrush="{x:Null}" Foreground="Black" Click="CarUsageDetailsBtn_Click">
+                                <StackPanel>
+                                    <Image Source="Images/car.png" Height="100" Width="100" />
+                                    <TextBlock Text="Car Usage" Grid.Row="0" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" />
+                                </StackPanel>
+                            </Button>
+
+                            <Button Name="MainteinanceUsageBtn" Background="{x:Null}" Margin="0,40,0,0" BorderBrush="{x:Null}" Foreground="Black" Click="MainteinanceUsageBtn_Click">
+                                <StackPanel>
+                                    <Image Source="Images/Maintenence.PNG" Height="100" Width="100" />
+                                    <TextBlock Text="Maintenance Usage" Grid.Row="0" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" />
+                                </StackPanel>
+                            </Button>
+
+                        </StackPanel>
+
+                        <Polygon Name="carusagepoly" Grid.Column="1"  Points="50,0 0,50, 50,100" Margin="0,40,0,0" Stroke="#FFA43704" Fill="#FFA43704" />
+
+                        <Polygon Name="maintenanceusagepoly" Grid.Column="1" Visibility="Hidden"  Points="50,0 0,50, 50,100" Margin="0,210,0,0" Stroke="#FFA43704" Fill="#FFA43704" />
+
+                        <Grid Grid.Column="2" Background="#FFA43704"  Margin="0,20,0,20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0">
+                                <StackPanel Grid.Column="0">
+                                    <Button Name="maintanaceusageresetBtn" Height="25" Width="100" Content="Reset" Margin="0,20,0,0" Background="#FF259C97" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="maintanaceusageresetBtn_Click"/>
+
+                                    <TextBlock Text="Search by Dates" FontSize="20" Margin="0,20,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" />
+
+                                    <DockPanel Margin="0,10,0,0">
+                                        <TextBlock Text="Start Date" Margin="10,0,0,0" FontSize="15" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <DatePicker SelectedDate="{x:Static sys:DateTime.Now}" Name="startdatemaintenancedate" Height="25" Width="120"  BorderBrush="{x:Null}"/>
+                                    </DockPanel>
+
+                                    <DockPanel Margin="0,10,0,0">
+                                        <TextBlock Text="End Date" Margin="15,0,0,0" FontSize="15" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <DatePicker SelectedDate="{x:Static sys:DateTime.Now}" Name="enddatemaintenancedate" Height="25" Width="120" BorderBrush="{x:Null}" />
+                                    </DockPanel>
+
+                                    <Button Name="SearchbyDateMaintenanceBtn" Height="25" Width="100" Content="Search" Margin="0,20,0,0" Background="#FF259C97" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SearchbyDateMaintenanceBtn_Click"/>
+
+                                    <TextBlock Text="Search by Slot" FontSize="20" Margin="0,40,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline"/>
+
+                                    <DockPanel Margin="0,10,0,0">
+                                        <TextBlock Text="Select Slot" FontSize="15" Margin="15,0,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <ComboBox Name="Maintenancesloatusagecombo" Width="100" Height="25">
+                                                <ComboBoxItem IsSelected="True">1</ComboBoxItem>
+                                                <ComboBoxItem>2</ComboBoxItem>
+                                                <ComboBoxItem>3</ComboBoxItem>
+                                                <ComboBoxItem>4</ComboBoxItem>
+                                        </ComboBox>
+                                    </DockPanel>
+
+                                    <Button Name="SearchbySloatMaintenanceBtn" Height="25" Width="100" Content="Search" Margin="0,20,0,0" Background="#FF259C97" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SearchbySloatMaintenanceBtn_Click"/>
+
+                                    </StackPanel>
+                                </ScrollViewer>
+
+                                <Line Grid.Column="1" X1="0" X2="0" Y1="20" Y2="350" Stroke="White" StrokeThickness="1" HorizontalAlignment="Center" />
+
+                                <Grid Grid.Column="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Name="UsageLabelTxt" Text="Car Usage Data" FontSize="30" Margin="0,0,0,0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" TextDecorations="{x:Null}"/>
+
+                                <Button Name="carPDFBtn" Height="25" Width="100" Content="PDF Download" Margin="0,0,20,0" Background="#FF259C97" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Click="carPDFBtn_Click" />
+                                    
+                                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                                    <Grid Grid.Row="1">
+
+                                        <DockPanel>
+                                            <StackPanel Name="MaintenanceSlotnoStack" Width="150" HorizontalAlignment="Left">
+                                                
+                                            </StackPanel>
+                                            <StackPanel Name="MaintenanceStarttimeStack" Width="170" HorizontalAlignment="Left">
+                                                
+                                            </StackPanel>
+                                            <StackPanel Name="MaintenanceEndtimeStack" Width="170" HorizontalAlignment="Left" Margin="20,0,0,0">
+                                                
+                                            </StackPanel>
+                                        </DockPanel>
+                                        
+                                    </Grid>
+                                    </ScrollViewer>
+
+                                </Grid>
+                                
+                            </Grid>
+
+                        
+
+                    </Grid>
+
+                </Grid>
+                
+                <Line Grid.Column="1" X1="0" X2="0" Y1="20" Y2="440" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Center" />
+                <Line Grid.Column="5" X1="0" X2="0" Y1="20" Y2="440" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Center" />
+
+                <Grid Grid.Column="4" Name="GateStatusGrid"  Width="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Gate Usage Details and Reports" Margin="25,0,25,0" Grid.Row="0" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"  />
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="3">
+                            <Button Name="GateUsageDetailsBtn" Background="{x:Null}" Margin="0,40,0,0" BorderBrush="{x:Null}" Foreground="Black" Click="GateUsageDetailsBtn_Click">
+                                <StackPanel>
+                                    <Image Source="Images/gate.png" Height="100" Width="100" />
+                                    <TextBlock Text="Gate Usage" Grid.Row="0" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+                        <Polygon Grid.Column="2"  Points="0,0 50,50, 0,100" Margin="0,40,0,0" Stroke="#FFA43704" Fill="#FFA43704" />
+                        
+                        <Grid Grid.Column="1" Background="#FFA43704"  Margin="0,20,0,20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="250"/>
+                            </Grid.ColumnDefinitions>
+
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="2">
+                                <StackPanel Grid.Column="0">
+                                    <Button Name="gateusageresetBtn" Height="25" Width="100" Content="Reset" Margin="0,20,0,0" Background="#FF259C97" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="gateusageresetBtn_Click"/>
+
+                                    <TextBlock Text="Search by Dates" FontSize="20" Margin="0,20,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" />
+
+                                    <DockPanel Margin="0,10,0,0">
+                                        <TextBlock Text="Start Date" Margin="10,0,0,0" FontSize="15" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <DatePicker SelectedDate="{x:Static sys:DateTime.Now}" Name="startdategatedate" Height="25" Width="120"  BorderBrush="{x:Null}"/>
+                                    </DockPanel>
+
+                                    <DockPanel Margin="0,10,0,0">
+                                        <TextBlock Text="End Date" Margin="15,0,0,0" FontSize="15" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <DatePicker SelectedDate="{x:Static sys:DateTime.Now}" Name="enddategatedate" Height="25" Width="120" BorderBrush="{x:Null}" />
+                                    </DockPanel>
+
+                                    <Button Name="SearchbyDategateBtn" Height="25" Width="100" Content="Search" Margin="0,20,0,0" Background="#FF259C97" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SearchbyDategateBtn_Click"/>
+
+                                    <TextBlock Text="Search by Gate Type" FontSize="20" Margin="0,40,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline"/>
+
+                                    <DockPanel Margin="0,10,0,0">
+                                        <TextBlock Text="Select Type" FontSize="15" Margin="15,0,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <ComboBox Name="gatetypeloatusagecombo" Width="100" Height="25">
+                                            <ComboBoxItem IsSelected="True">Entry Gate</ComboBoxItem>
+                                            <ComboBoxItem>Exit Gate</ComboBoxItem>
+                                        </ComboBox>
+                                    </DockPanel>
+
+                                    <Button Name="SearchbygatetypeBtn" Height="25" Width="100" Content="Search" Margin="0,20,0,0" Background="#FF259C97" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SearchbygatetypeBtn_Click"/>
+
+                                    <TextBlock Text="Search by Mode" FontSize="20" Margin="0,40,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline"/>
+
+                                    <DockPanel Margin="0,10,0,0">
+                                        <TextBlock Text="Select Type" FontSize="15" Margin="15,0,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <ComboBox Name="gateopentypeloatusagecombo" Width="100" Height="25">
+                                            <ComboBoxItem IsSelected="True">Automatic</ComboBoxItem>
+                                            <ComboBoxItem>Manual</ComboBoxItem>
+                                        </ComboBox>
+                                    </DockPanel>
+
+                                    <Button Name="SearchbygateopentypeBtn" Height="25" Width="100" Content="Search" Margin="0,20,0,0" Background="#FF259C97" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SearchbygateopentypeBtn_Click"/>
+
+                                </StackPanel>
+                            </ScrollViewer>
+
+                            <Line Grid.Column="1" X1="0" X2="0" Y1="20" Y2="350" Stroke="White" StrokeThickness="1" HorizontalAlignment="Center" />
+
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Gate Usage Data" FontSize="30" Margin="20,0,0,0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" TextDecorations="{x:Null}"/>
+
+                                <Button Name="getPDFBtn" Height="25" Width="100" Content="PDF Download" Margin="0,0,20,0" Background="#FF259C97" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Click="getPDFBtn_Click" />
+                                
+                                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                                    <Grid Grid.Row="1">
+
+                                        <DockPanel Margin="25,0,0,0">
+                                            <StackPanel Name="gatetypeStack" Width="100" HorizontalAlignment="Left">
+
+                                            </StackPanel>
+                                            <StackPanel Name="gateStarttimeStack" Width="170" HorizontalAlignment="Left">
+
+                                            </StackPanel>
+                                            <StackPanel Name="gateEndtimeStack" Width="170" HorizontalAlignment="Left" Margin="20,0,0,0">
+
+                                            </StackPanel>
+
+                                            <StackPanel Name="gateopentypeStack" Width="100" HorizontalAlignment="Left" Margin="20,0,0,0">
+
+                                            </StackPanel>
+                                        </DockPanel>
+
+                                    </Grid>
+                                </ScrollViewer>
+
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="90"/>
+                    </Grid.RowDefinitions>
+
+                    <Button x:Name="GateDetailBtn" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="40" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="GateDetailBtn_Click" >
+                        <Image Name="GateSatusArrowimg" Source="Images/leftarrow.png"  />
+                    </Button>
+                    
+                    <TextBlock Name="GateCountTxt" Text="Gate Count : 0 / 4" Grid.Row="1" FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+                    
+                    <TextBlock Text="Gate Status" Grid.Row="0" FontSize="25" Margin="20,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="Bold"  />
+                    <TextBlock  Text="Entry Gate Status" Grid.Row="2" FontSize="15" VerticalAlignment="Bottom" FontWeight="Bold" />
+
+                    <Grid Grid.Row="3" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel>
+                            <Button x:Name="EntryGateOpenBtn" Height="30" Width="35" Margin="0,10,0,0" Click="EntryGateOpenBtn_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="Images/gateopen.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="ExitGateClose" Height="30" Width="35" Margin="0,10,0,0" Click="ExitGateClose_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="Images/gateclose.png"/>
+                                </Button.Background>
+                            </Button>
+                        </StackPanel>
+                        
+                        <Image Name="EntryGateImage" Grid.Column="1" Source="Images/Closegate.png" Margin="10,0,0,0" Height="80" Width="80" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    </Grid>
+                    
+                    <TextBlock Text="Exit Gate Status" Grid.Row="4" FontSize="15" VerticalAlignment="Bottom" FontWeight="Bold" />
+
+                    <Grid Grid.Row="5" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+                            <Button x:Name="ExitGateOpen" Height="30" Width="35" Margin="0,10,0,0" HorizontalAlignment="Right" Click="ExitGateOpen_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="Images/gateopen.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="ExitGateCloseBtn" Height="30" Width="35" Margin="0,10,0,0" Click="ExitGateCloseBtn_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="Images/gateclose.png"/>
+                                </Button.Background>
+                            </Button>
+                        </StackPanel>
+
+                        <Image Name="ExitGateImage" Grid.Column="1" Source="Images/Closegate.png" Margin="10,0,0,0" Height="80" Width="80" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    </Grid>
+                    
+
+                    <TextBlock Text="Full Gate Status" Grid.Row="6" FontSize="15" VerticalAlignment="Bottom" FontWeight="Bold" />
+                    
+                    <Image Name="FullGateImage" Grid.Row="7" Source="Images/Opengate.png" Margin="40,0,0,0" Height="80" Width="80" VerticalAlignment="Bottom"/>
+                </Grid>
+
+
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Status" Grid.Row="0" FontSize="25" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="Bold"  />
+
+                    <TextBlock Name="AvailibleTxt" Text="Not Availible" Grid.Row="1" Foreground="Red" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"  />
+                    <TextBlock Name="CommaentTxt" Text="System is Offline" Grid.Row="2" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Center"  />
+
+                    <Line Grid.Row="3" X1="0" X2="1200" Y1="0" Y2="0" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Live Availability" Grid.Row="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"  />
+                    
+                    <Grid Grid.Row="5" Height="250">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Ground Floor" Grid.Row="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" />
+
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="10"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <DockPanel Name="Sensor1DockPanel" Background="Green" Grid.Column="0" Grid.Row="0">
+                                    <TextBlock Name="StatusSensor1Txt" Grid.Column="0" Grid.Row="0" Text="Slot 1"  FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Name="Sensor2DockPanel" Background="Green" Grid.Column="0" Grid.Row="2">
+                                    <TextBlock Name="StatusSensor2Txt" Grid.Column="0" Grid.Row="0" Text="Slot 2" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Name="Sensor3DockPanel" Background="Green" Grid.Column="2" Grid.Row="0">
+                                    <TextBlock Name="StatusSensor3Txt" Grid.Column="0" Grid.Row="0" Text="Slot 3" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Name="Sensor4DockPanel"  Background="Green" Grid.Column="2" Grid.Row="2">
+                                    <TextBlock Name="StatusSensor4Txt" Grid.Column="0" Grid.Row="0" Text="Slot 4" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+                        <Line Grid.Column="1" X1="0" X2="0" Y1="20" Y2="250" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Center" />
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Maintanance" Grid.Row="0" FontSize="20" VerticalAlignment="Center" FontWeight="Bold"  HorizontalAlignment="Center" />
+
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="10"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Name="Sloat1Maintanace" Content="Slot 1 OPEN" FontSize="30" Background="Green" Grid.Column="0" Grid.Row="0" Click="Sloat1Maintanace_Click" />
+                                <Button Name="Sloat2Maintanace" Content="Slot 2 OPEN" FontSize="30" Background="Green" Grid.Column="0" Grid.Row="2" Click="Sloat2Maintanace_Click" />
+                                <Button Name="Sloat3Maintanace" Content="Slot 3 OPEN" FontSize="30" Background="Green" Grid.Column="3" Grid.Row="0" Click="Sloat3Maintanace_Click_1" />
+                                <Button Name="Sloat4Maintanace" Content="Slot 4 OPEN" FontSize="30" Background="Green" Grid.Column="2" Grid.Row="2" Click="Sloat4Maintanace_Click" />
+                                
+
+                            </Grid>
+
+                        </Grid>
+
+
+                    </Grid>
+                    
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>
